@@ -1,0 +1,22 @@
+<% if @user.errors.any? %>
+<!--createアクションから渡された引数@を使っていく-->
+    <div class="error_explaination">
+      <!--<h2>1 error prohibited this book from being saved:</h2>-->
+      <h3>
+        <% if @user.errors.count >= 2 %>
+          <%= @user.errors.count %>
+          errors
+        <% else %>
+          <%= @user.errors.count %>
+          error
+        <% end %>
+        prohibited this book from being saved:
+      </h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
