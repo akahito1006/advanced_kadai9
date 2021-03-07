@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
   root 'homes#index'
   # 設定済み；resources :homes, only: [:index, :about]
   get '/home/about' => 'homes#about'
