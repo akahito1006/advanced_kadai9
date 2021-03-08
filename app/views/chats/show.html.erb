@@ -5,12 +5,8 @@
       <th>投稿内容</th>
     </tr>
   </thead>
-  <tbody>
-    <% @chats.each do |chat| %>
-      <tr id="chat_history">
-        <%= render partial: 'chats/history', locals: {chat: chat} %>
-      </tr>
-    <% end %>
+  <tbody id="chat_history">
+        <%= render partial: 'chats/history', locals: {chats: @chats} %>
   </tbody>
 </table>
 
