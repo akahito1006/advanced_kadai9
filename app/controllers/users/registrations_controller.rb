@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           sign_up(resource_name, resource)
           respond_with resource, location: after_sign_up_path_for(resource)
           p '-------------------------'
-          ThanksMailer.send_signup_email(resource).deliver
+
         else
           set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
           expire_data_after_sign_in!
