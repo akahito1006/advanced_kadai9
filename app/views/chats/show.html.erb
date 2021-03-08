@@ -1,23 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>投稿内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @chats.each do |chat| %>
+      <tr id="chat_history">
+        <%= render partial: 'chats/history', locals: {chat: chat} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= form_with model: @chat do |f| %>
   <%= f.text_field :message %>
   <%= f.submit %>
   <%= f.hidden_field :room_id %>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <td>投稿者名</td>
-      <td>投稿内容</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @chats.each do |chat| %>
-      <tr>
-        <td><%= chat.user.name %></td>
-        <td><%= chat.message %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-  
