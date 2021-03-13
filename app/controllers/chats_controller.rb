@@ -19,6 +19,8 @@ class ChatsController < ApplicationController
   
   def create
     @chat = current_user.chats.new(chat_params)
+    p @chat
+    p "---------------------------"
     @chat.save
 
   end

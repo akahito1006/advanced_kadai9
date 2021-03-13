@@ -1,17 +1,18 @@
-<table>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>投稿内容</th>
-    </tr>
-  </thead>
-  <tbody id="chat_history">
-        <%= render partial: 'chats/history', locals: {chats: @chats} %>
-  </tbody>
-</table>
-
-<%= form_with model: @chat do |f| %>
-  <%= f.text_field :message %>
-  <%= f.submit %>
-  <%= f.hidden_field :room_id %>
-<% end %>
+<div class="message">
+  <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <p style="text-align: right;"><%= chat.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
+</div>
+<!--create.jsより、入力したら<p>の後ろにappendでメッセージを追加させるという動きをする-->
+<!--クラス.messageをターゲットにしているのでフォームを外に出してやればフォームより下に追加されることはない-->
+  <%= form_with model: @chat do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "投稿"%>
+    <%= f.hidden_field :room_id %>
+  <% end %>
+  <!--ボタンがあるほうがわかりやすいので追加-->

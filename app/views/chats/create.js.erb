@@ -1,1 +1,4 @@
-$("#chat_history").html("<%= j(render partial: 'chats/history', locals: {chats: @chat}) %>");
+$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
+<!--クラス.messageの<p>の後ろにappendで次のメッセージを追加する-->
+$('input[type=text]').val("")
+<!--1行目の後、フォームに””（空）を入れる-->
